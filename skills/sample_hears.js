@@ -1,12 +1,8 @@
 /*
-
 WHAT IS THIS?
-
 This module demonstrates simple uses of Botkit's `hears` handler functions.
-
 In these examples, Botkit is configured to listen for certain phrases, and then
 respond immediately with a single line response.
-
 */
 
 var wordfilter = require('wordfilter');
@@ -27,6 +23,15 @@ module.exports = function(controller) {
         stats.convos++;
     });
 
+    controller.on('slash_command', function (bot, message) {
+      switch (message.command) {
+        case '/project':
+          bot.replyPrivate(message, 'Hello World')
+          break
+        default:
+          bot.replyPrivate(message, "Sorry, I'm not sure what that command is")
+      }
+    })
 
     controller.hears(['^uptime','^debug'], 'direct_message,direct_mention', function(bot, message) {
 
