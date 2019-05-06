@@ -24,9 +24,10 @@ module.exports = function(controller) {
     });
 
     controller.on('slash_command', function (bot, message) {
+      let channel = message.channel_id;
       switch (message.command) {
         case '/project':
-          bot.replyPrivate(message, 'Hello World')
+          bot.replyPrivate(message, `Here is your channel id: ${channel} `)
           break
         default:
           bot.replyPrivate(message, "Sorry, I'm not sure what that command is")
