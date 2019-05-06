@@ -18,6 +18,7 @@
     "querystring": "^0.2.0",
     "request": "^2.79.0",
     "wordfilter": "^0.2.6"
+    "hoek": ">=4.2.1"
   },
   "devDependencies": {},
   "repository": {
