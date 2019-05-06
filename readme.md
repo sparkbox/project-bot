@@ -1,3 +1,5 @@
+This is a SlackBot project that uses slash commands to give information about current projects in Slack Channels. In test.
+
 # Botkit Starter Kit for Slack Bots
 
 This repo contains everything you need to get started building a Slack bot with [Botkit](https://botkit.ai).
@@ -39,10 +41,10 @@ cd botkit-starter-slack
 npm install
 ```
 
-#### Set up your Slack Application 
-Once you have setup your Botkit development enviroment, the next thing you will want to do is set up a new Slack application via the [Slack developer portal](https://api.slack.com/). This is a multi-step process, but only takes a few minutes. 
+#### Set up your Slack Application
+Once you have setup your Botkit development enviroment, the next thing you will want to do is set up a new Slack application via the [Slack developer portal](https://api.slack.com/). This is a multi-step process, but only takes a few minutes.
 
-* [Read this step-by-step guide](https://botkit.ai/docs/provisioning/slack-events-api.html) to make sure everything is set up. 
+* [Read this step-by-step guide](https://botkit.ai/docs/provisioning/slack-events-api.html) to make sure everything is set up.
 
 * We also have this [handy video walkthrough](https://youtu.be/us2zdf0vRz0) for setting up this project with Glitch.
 
@@ -91,12 +93,12 @@ You can find full documentation for Botkit on [our website](https://botkit.ai/do
 ###  Need more help?
 * Glitch allows users to ask the community for help directly from the editor! For more information on raising your hand, [read this blog post.](https://medium.com/glitch/just-raise-your-hand-how-glitch-helps-aa6564cb1685)
 
-* Join our thriving community of Botkit developers and bot enthusiasts at large. Over 4500 members strong, [our open Slack group](http://community.botkit.ai) is _the place_ for people interested in the art and science of making bots. 
+* Join our thriving community of Botkit developers and bot enthusiasts at large. Over 4500 members strong, [our open Slack group](http://community.botkit.ai) is _the place_ for people interested in the art and science of making bots.
 
  Come to ask questions, share your progress, and commune with your peers!
 
-* We also host a [regular meetup and annual conference called TALKABOT.](http://talkabot.ai) Come meet and learn from other bot developers! 
- 
+* We also host a [regular meetup and annual conference called TALKABOT.](http://talkabot.ai) Come meet and learn from other bot developers!
+
  [Full video of our 2016 event is available on Youtube.](https://www.youtube.com/playlist?list=PLD3JNfKLDs7WsEHSal2cfwG0Fex7A6aok)
 
 
