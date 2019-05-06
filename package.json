@@ -14,13 +14,17 @@
     "debug": "^2.3.3",
     "express": "^4.14.0",
     "express-hbs": "^1.0.4",
+    "hoek": ">=4.2.1",
     "node-env-file": "^0.1.8",
     "querystring": "^0.2.0",
     "request": "^2.79.0",
     "wordfilter": "^0.2.6"
-    "hoek": ">=4.2.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "botkit-mock": "^0.1.11",
+    "chai": "^4.2.0",
+    "mocha": "^6.1.4"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/howdyai/botkit-starter-slack.git"
