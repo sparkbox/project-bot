@@ -22,17 +22,6 @@ module.exports = function (controller) {
     stats.convos++;
   });
 
-  controller.on('slash_command', (bot, message) => {
-    const channel = message.channel_id;
-    switch (message.command) {
-      case '/project':
-        bot.replyPrivate(message, `Here is your channel id: ${channel} `);
-        break;
-      default:
-        bot.replyPrivate(message, "Sorry, I'm not sure what that command is");
-    }
-  });
-
   controller.hears(['^uptime', '^debug'], 'direct_message,direct_mention', (bot, message) => {
     bot.createConversation(message, (err, convo) => {
       if (!err) {
