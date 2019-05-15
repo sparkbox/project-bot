@@ -1,4 +1,4 @@
-.db
+.data
 .env
 node_modules
 components/routes/_*
