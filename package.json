@@ -5,7 +5,7 @@
   "main": "bot.js",
   "scripts": {
     "start": "node bot.js",
-    "test": "mocha"
+    "test": "mocha 'test/**/*.js' "
   },
   "dependencies": {
     "body-parser": "^1.15.2",
@@ -23,7 +23,8 @@
   },
   "devDependencies": {
     "chai": "^4.2.0",
-    "mocha": "^6.1.4"
+    "mocha": "^6.1.4",
+    "botkit-mock": "0.1.11"
   },
   "repository": {
     "type": "git",
