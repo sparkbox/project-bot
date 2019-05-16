@@ -5,9 +5,9 @@ const {
     CommandParser,
     Add, 
     Delete
-} = require('../lib/addAction');
+} = require('../lib/commandParserAndController');
 
-describe.only('Feat', () => {
+describe('Feat', () => {
 
     describe('Command Parser', ()=> {
         it('should return parameters', () => {
