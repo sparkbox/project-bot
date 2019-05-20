@@ -7,7 +7,18 @@ if (!process.env.clientId || !process.env.clientSecret || !process.env.PORT) {
   // process.exit(1);
 }
 
-var Botkit = require('botkit');
+var Botkit = require('botkit'),
+var mysqlStorage = require('botkit-storage-mysql')(
+  {
+    host: '127.0.0.1', 
+    user: 'root', 
+    password: 'rootPassword', 
+    database: 'my_db_name'
+  }),
+controller = Botkit.slackbot({
+    storage: mysqlStorage
+});
+
 var debug = require('debug')('botkit:main');
 
 var bot_options = {
@@ -30,7 +41,7 @@ if (process.env.MONGO_URI) {
 }
 
 // Create the Botkit controller, which controls all instances of the bot.
-var controller = Botkit.slackbot(bot_options);
+// var controller = Botkit.slackbot(bot_options);
 
 controller.startTicking();
 
