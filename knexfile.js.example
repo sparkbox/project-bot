@@ -1,0 +1,14 @@
+// Update with your config settings.
+
+module.exports = {
+
+  development: {
+    client: 'mysql',
+    connection: {
+      database: 'project-bot_development',
+      user:     'username',
+      password: 'password',
+      host: '127.0.0.1'
+    }
+  }
+};

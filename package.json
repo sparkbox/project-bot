@@ -5,7 +5,8 @@
   "main": "bot.js",
   "scripts": {
     "start": "node bot.js",
-    "test": "mocha"
+    "test": "mocha",
+    "migrate": "knex migrate:latest"
   },
   "dependencies": {
     "body-parser": "^1.15.2",
@@ -15,11 +16,13 @@
     "debug": "^2.3.3",
     "express": "^4.14.0",
     "express-hbs": "^1.0.4",
+    "hoek": ">=4.2.1",
+    "knex": "^0.16.5",
     "node-env-file": "^0.1.8",
+    "node-mysql": "^0.4.2",
     "querystring": "^0.2.0",
     "request": "^2.79.0",
-    "wordfilter": "^0.2.6",
-    "hoek": ">=4.2.1"
+    "wordfilter": "^0.2.6"
   },
   "devDependencies": {
     "chai": "^4.2.0",
