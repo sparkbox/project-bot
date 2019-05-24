@@ -1,0 +1,8 @@
+{
+  "extends": ["sparkbox"],
+  "env": {
+    "commonjs": true,
+    "node": true,
+    "mocha": true
+  }
+}
