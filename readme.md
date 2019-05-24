@@ -9,11 +9,8 @@ project. With a slash command, the bot will return requested information such as
 general overview or team information. Specific users will also be able to add and
 delete specific information. See the image below to get a better understanding.
 
-## End Goal
-![Project Bot End Result](Images/slash.png)
-
 ## Technologies:
-NodeJS, Botkit, MongoDB
+NodeJS, Botkit, MySQL
 
 ## Architectural Design
 
