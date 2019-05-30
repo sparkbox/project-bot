@@ -123,9 +123,10 @@ if (!process.env.clientId || !process.env.clientSecret) {
   require(__dirname + '/components/plugin_glitch.js')(controller);
 
   var normalizedPath = require("path").join(__dirname, "skills");
-  require("fs").readdirSync(normalizedPath).forEach(function(file) {
-    require("./skills/" + file)(controller);
-  });
+  require("fs").readdirSync(normalizedPath).filter(file => file.endsWith('.js')).forEach(function(file) {
+
+  require("./skills/" + file)(controller);
+});
 
   // This captures and evaluates any message sent to the bot as a DM
   // or sent to the bot in the form "@bot message" and passes it to
