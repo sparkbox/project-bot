@@ -9,7 +9,7 @@ describe('Add Link To Project Response Mock', () => {
       hasReplied = message === expectedMessage;
     }
     const response = new AddLinkToProjectResponse();
-    response.sendToBot({ reply: replyMock });
+    response.sendToBot({ reply: replyMock }, expectedMessage);
     expect(hasReplied).to.equal(true);
   });
 });
