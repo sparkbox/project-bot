@@ -124,8 +124,7 @@ if (!process.env.clientId || !process.env.clientSecret) {
 
   var normalizedPath = require("path").join(__dirname, "skills");
   require("fs").readdirSync(normalizedPath)
-.filter(file => file !== '.DS_Store')
-.forEach(function(file) {
+.filter(file => file !== '.DS_Store').forEach(function(file) {
   require("./skills/" + file)(controller);
 });
 
