@@ -13,7 +13,7 @@ describe("Add actions", () => {
     //clean up botkit tick interval
     this.controller.shutdown();
   });
-  it('valid add action should return confirmation message', () => {
+  it('should return valid confirmation message on user input', () => {
     return this.bot.usersInput([
       {
         type: 'slash_command',
@@ -21,7 +21,7 @@ describe("Add actions", () => {
         channel: 'someChannel',
         messages: [
           {
-            text: 'add jira jira.com',
+            text: 'add google google.com',
             isAssertion: true,
             command: '/project'
           }
@@ -29,7 +29,7 @@ describe("Add actions", () => {
 
       }
     ]).then((message) => {
-        expect(message.text).to.equal('A link has been added')
+        expect(message.text).to.equal('Link stored.')
     })
   })
 })
