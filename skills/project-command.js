@@ -4,12 +4,14 @@ const AddLinkToProjectResponse = require('../lib/actions/AddLinkToProjectRespons
 const Project = require('../lib/project');
 
 module.exports = function(controller) {
-  controller.on('slash_command', function (bot, message) {
+  controller.on('slash_command', async function (bot, message) {
     if(message.command === '/project'){
-      let text = message.text;
+      let channel = message.channel;
+      let fullMessageText = message.text;
       let command = message.command;
-      let action = Actions.fromMessageText(text);
-      let response = action.execute(text);
+      let project = await Project.findByChannel(channel);
+      let action = Actions.fromMessageText(fullMessageText);
+      let response = await action.execute(fullMessageText);
       console.log(response.sendToBot(bot, message));
     }
   });
