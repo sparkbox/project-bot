@@ -1,8 +1,8 @@
 const { expect } = require('chai');
 const ProjectLinks = require('../lib/projectLinks');
 
-describe('Add Link To Project Response Mock', () => {
-  it('returns true if bot response link is stored', () => {
+describe('Saves Links To Project', () => {
+  xit('returns true link is stored', () => {
     const expectedMessage = 'Link stored.'
     let hasReplied = false;
     function replyMock(message) {
