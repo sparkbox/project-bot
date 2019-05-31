@@ -11,7 +11,7 @@ module.exports = function(controller) {
         // this just takes text arguments (add goog google.com)
         let action = Actions.fromMessageText(message.text);
         let response = await action.execute(message.text);
-        response.sendToBot(bot, message.channel);
+        response.sendToBot(bot, message);
 
     }
   });
