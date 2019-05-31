@@ -13,7 +13,7 @@ describe("Add actions", () => {
     //clean up botkit tick interval
     this.controller.shutdown();
   });
-  it('should return valid confirmation message on user input', () => {
+  it('should return valid confirmation message on success of user input', () => {
     return this.bot.usersInput([
       {
         type: 'slash_command',
@@ -28,8 +28,27 @@ describe("Add actions", () => {
         ]
 
       }
-    ]).then((message) => {
-        expect(message.text).to.equal('Link stored.')
+    ]).then((response) => {
+        expect(response.text).to.equal('Link stored.')
+    })
+  })
+  it('should fail on invalid user input', () => {
+    return this.bot.usersInput([
+      {
+        type: 'slash_command',
+        user: 'someUserId',
+        channel: 'someChannel',
+        messages: [
+          {
+            text: 'some invalid input',
+            isAssertion: true,
+            command: '/project'
+          }
+        ]
+
+      }
+    ]).then((response) => {
+        expect(response.text).to.equal(undefined)
     })
   })
 })

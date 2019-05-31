@@ -12,7 +12,7 @@ module.exports = function(controller) {
       let project = await Project.findByChannel(channel);
       let action = Actions.fromMessageText(fullMessageText);
       let response = await action.execute(fullMessageText);
-      console.log(response.sendToBot(bot, message));
+     response.sendToBot(bot, message);
     }
   });
 }
