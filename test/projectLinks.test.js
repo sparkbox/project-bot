@@ -1,5 +1,5 @@
 const { expect } = require('chai');
-const AddLinkToProjectResponse = require('../lib/actions/addLinkToProjectResponse');
+const ProjectLinks = require('../lib/projectLinks');
 
 describe('Add Link To Project Response Mock', () => {
   it('returns true if bot response link is stored', () => {
