@@ -35,8 +35,9 @@ describe('Add Link to Project Action', ()=> {
 
     it('@asyncResolves : returns an add object containing a response', async () => {
         const action = new AddLinkToProjectAction();
-        const response = await action.execute('add google google.com')
-        const expectedResult = new AddLinkToProjectResponse('google', 'google.com')
+        const project = new Project();
+        const response = await action.execute('add google google.com', project);
+        const expectedResult = new AddLinkToProjectResponse('google', 'google.com');
         expect(response).to.deep.equal(expectedResult);
     });
 });
