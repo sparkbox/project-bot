@@ -10,5 +10,13 @@ describe('Saves Links To Project', () => {
     const projectLinksList = projectLinks.projectLinksList;
     const expectedResult = { google: 'google.com' };
     expect(projectLinksList).to.deep.equal(expectedResult)
-  });  
+  }); 
+  
+  it('Saves a link to the Project', () => {
+    const project = new Project();
+    project.links.add('google', 'google.com');
+    const projectList = project.links.projectLinksList;
+    const expectedResult = { google: 'google.com' };
+    expect(projectList).to.deep.equal(expectedResult)
+  });
 })
