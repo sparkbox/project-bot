@@ -3,7 +3,7 @@ const Project = require('../lib/project');
 const ProjectLinks = require('../lib/projectLinks');
 const AddLinkToProjectResponse = require('../lib/actions/AddLinkToProjectResponse');
 
-describe('Saves Links To Project', () => {
+describe('Project Links', () => {
   it('Adds links to Project Links', () => {
     const projectLinks = new ProjectLinks();
     projectLinks.add('google', 'google.com')
