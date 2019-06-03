@@ -1,17 +1,14 @@
 const { expect } = require('chai');
+const Project = require('../lib/project');
 const ProjectLinks = require('../lib/projectLinks');
+const AddLinkToProjectResponse = require('../lib/actions/AddLinkToProjectResponse');
 
 describe('Saves Links To Project', () => {
-  xit('returns true link is stored', () => {
-    const expectedMessage = 'Link stored.'
-    let hasReplied = false;
-    function replyMock(message) {
-      hasReplied = message === expectedMessage;
-    }
-    
-    const response = new AddLinkToProjectResponse();
-    response.sendToBot( {reply: replyMock} );
-    
-    expect(hasReplied).to.be.true;
-  })
+  it('Adds links to Project Links', () => {
+    const projectLinks = new ProjectLinks();
+    projectLinks.add('google', 'google.com')
+    const projectLinksList = projectLinks.projectLinksList;
+    const expectedResult = { google: 'google.com' };
+    expect(projectLinksList).to.deep.equal(expectedResult)
+  });  
 })

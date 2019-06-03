@@ -1,6 +1,8 @@
 const { expect } = require('chai');
 const AddLinkToProjectAction = require('../lib/actions/addLinkToProjectAction');
 const AddLinkToProjectResponse = require('../lib/actions/addLinkToProjectResponse');
+const Project = require('../lib/project')
+const ProjectLinks = require('../lib/projectLinks')
 const AssertionError = require('assert').AssertionError;
 
 describe('Add Link to Project Action', ()=> {
@@ -32,8 +34,8 @@ describe('Add Link to Project Action', ()=> {
     xit('@asyncResolves : adds link to DB', async () => {});
 
     it('@asyncResolves : returns an add object containing a response', async () => {
-        const addLinkToProjectAction = new AddLinkToProjectAction();
-        const response = await addLinkToProjectAction.execute('google google.com')
+        const action = new AddLinkToProjectAction();
+        const response = await action.execute('add google google.com')
         const expectedResult = new AddLinkToProjectResponse('google', 'google.com')
         expect(response).to.deep.equal(expectedResult);
     });
