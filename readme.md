@@ -12,10 +12,17 @@ delete specific information. See the image below to get a better understanding.
 ## End Goal
 ![Project Bot End Result](Images/slash.png)
 
+
+
+### Knex Configuration:
+In order for your Knex migrations to function correctly be sure to setup your
+local project `.env` file with your own personal host, user, password and database name
+information. Your `.env` file should be private and ignored in your `.gitignore` file.
+Copy `envFileExample.txt` to your `.env` file and update with your settings.
+
 ## Technologies:
 NodeJS, Botkit, MySQL
 
-## Architectural Design
 
 ## Testing:
 
