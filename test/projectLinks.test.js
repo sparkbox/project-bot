@@ -11,6 +11,12 @@ describe('Project Links', () => {
     const expectedResult = { google: 'google.com' };
     expect(projectLinksList).to.deep.equal(expectedResult)
   }); 
+  it('Returns Error Message on invalid adds link to Project Links', () => {
+    const projectLinks = new ProjectLinks();
+    const projectLinksList = projectLinks.add({label: 'google', link: 'google.com'});
+    const expectedResult = 'Cannot add item.';
+    expect(projectLinksList).to.deep.equal(expectedResult)
+  }); 
   
   it('Saves a link to the Project', () => {
     const project = new Project();
