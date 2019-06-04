@@ -4,30 +4,27 @@ const ProjectLinks = require('../lib/projectLinks');
 const AddLinkToProjectResponse = require('../lib/actions/AddLinkToProjectResponse');
 
 describe('Project Links', () => {
-  it('Adds links to Project Links', () => {
+  it('Saves a link to the Project', () => {
+    let project = new Project();
     const projectLinks = new ProjectLinks();
-    projectLinks.add('google', 'google.com')
-    const projectLinksList = projectLinks.projectLinksList;
+    projectLinks.add(project, 'google', 'google.com')
+    const projectLinksList = project.links;
     const expectedResult = { google: 'google.com' };
     expect(projectLinksList).to.deep.equal(expectedResult)
   }); 
+
   it('Returns Error Message on invalid adds link to Project Links', () => {
     const projectLinks = new ProjectLinks();
     const projectLinksList = projectLinks.add({label: 'google', link: 'google.com'});
     const expectedResult = 'Cannot add item.';
     expect(projectLinksList).to.deep.equal(expectedResult)
   }); 
-  it('Saves a link to the Project', () => {
-    const project = new Project();
-    project.links.add('google', 'google.com');
-    const projectList = project.links.projectLinksList;
-    const expectedResult = { google: 'google.com' };
-    expect(projectList).to.deep.equal(expectedResult)
-  });
+
   it('Returns Error Message on invalid adds link to Project', () => {
     const project = new Project();
-    project.links.add({label: 'google', link: 'google.com'});
-    const projectList = project.links.projectLinksList;
+    const projectLinks = new ProjectLinks();
+    projectLinks.add({label: 'google', link: 'google.com'});
+    const projectList = project.links;
     const expectedResult = {};
     expect(projectList).to.deep.equal(expectedResult)
   });
