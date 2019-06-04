@@ -123,8 +123,8 @@ if (!process.env.clientId || !process.env.clientSecret) {
   require(__dirname + '/components/plugin_glitch.js')(controller);
 
   var normalizedPath = require("path").join(__dirname, "skills");
-  require("fs").readdirSync(normalizedPath)
-.filter(file => file !== '.DS_Store').forEach(function(file) {
+  require("fs").readdirSync(normalizedPath).filter(file => file.endsWith('.js')).forEach(function(file) {
+
   require("./skills/" + file)(controller);
 });
 
