@@ -5,10 +5,19 @@
   "main": "bot.js",
   "scripts": {
     "start": "node bot.js",
+    "dev": "nodemon bot.js",
     "migrate": "knex migrate:latest",
     "test": "npm run mocha && npm run eslint",
     "mocha": "mocha 'test/**/*.js'",
     "eslint": "eslint 'lib/**/*.js' 'skills/**/*.js' 'test/**/*.js'"
+  },
+  "nodemonConfig": {
+    "watch": [
+      "skills/*",
+      "lib/*",
+      "bot.js"
+    ],
+    "delay": "2500"
   },
   "dependencies": {
     "body-parser": "^1.15.2",
@@ -37,7 +46,8 @@
     "eslint-plugin-import": "^2.17.2",
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.13.0",
-    "mocha": "^6.1.4"
+    "mocha": "^6.1.4",
+    "nodemon": "^1.19.1"
   },
   "repository": {
     "type": "git",
