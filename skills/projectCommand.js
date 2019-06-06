@@ -1,15 +1,14 @@
 const Project = require('../lib/project.js');
-const AddLinkToProjectAction = require('../lib/actions/addLinkToProjectAction.js');
 const Actions = require('../lib/actions/actions.js');
-const AddLinkToProjectResponse = require('../lib/actions/AddLinkToProjectResponse.js');
 
-module.exports = function(controller) {
-  controller.on('slash_command', async function (bot, message) {
-    if(message.command === '/project'){
-      let channel = await Project.findByChannel(message.channel_id);
-        let action = Actions.fromMessageText(message.text);
-        let response = await action.execute(message.text);
-        await response.sendToBot(bot, message);
+module.exports = (controller) => {
+  controller.on('slash_command', async (bot, message) => {
+    if (message.command === '/project') {
+      /* eslint-disable-next-line no-unused-vars */
+      const channel = await Project.findByChannel(message.channel_id);
+      const action = Actions.fromMessageText(message.text);
+      const response = await action.execute(message.text);
+      await response.sendToBot(bot, message);
     }
   });
-}
+};
