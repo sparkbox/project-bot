@@ -8,16 +8,45 @@ const Project = require('../lib/project');
 const ProjectLink = require('../lib/projectLink');
 const AssertionError = require('assert').AssertionError;
 
-
 describe('Add Link to Project Action', ()=> {
   it('returns an add object containing a response', async () => {
-    const action = new AddLinkToProjectAction();
-    const project = new Project();
+    let projectLinkProjectArg;
+    let projectLinkLabelArg;
+    let projectLinkLinkArg;
 
+    let projectResponseLabelArg;
+    let projectResponseLinkArg;
+
+    class ProjectLinkSpy {
+      constructor(project, label, link) {
+        projectLinkProjectArg = project;
+        projectLinkLabelArg = label;
+        projectLinkLinkArg = link;
+      }
+      save() {}
+    };
+
+    class ProjectResponseSpy {
+      constructor(label, link) {
+        projectResponseLabelArg = label;
+        projectResponseLinkArg = link;
+      }
+    }
+
+    const action = new AddLinkToProjectAction(ProjectLinkSpy,
+                                              ProjectResponseSpy);
+
+    const project = new Project();
     const response = await action.execute('add google google.com', project);
 
-    const expectedResult = new AddLinkToProjectResponse('google', 'google.com');
-    expect(response).to.deep.equal(expectedResult);
+    expect(projectLinkProjectArg).to.equal(project);
+    expect(projectLinkLabelArg).to.equal('google');
+    expect(projectLinkLinkArg).to.equal('google.com');
+
+    expect(projectResponseLabelArg).to.equal('google');
+    expect(projectResponseLinkArg).to.equal('google.com');
+
+    expect(response.constructor.name).to.equal('ProjectResponseSpy');
   });
 
   it('throws a type error if there are not three space delimited params', async () => {
@@ -40,4 +69,15 @@ describe('Add Link to Project Action', ()=> {
   });
 
   xit('@asyncResolves : adds link to DB', async () => {});
+
+  // Component Level Test
+  it('@component: returns an add object containing a response', async () => {
+    const action = new AddLinkToProjectAction();
+    const project = new Project();
+
+    const response = await action.execute('add google google.com', project);
+
+    expect(response.label).to.equal('google');
+    expect(response.link).to.equal('google.com');
+  });
 });
