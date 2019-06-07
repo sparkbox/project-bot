@@ -10,24 +10,7 @@ const AssertionError = require('assert').AssertionError;
 
 
 describe('Add Link to Project Action', ()=> {
-  it('returns an error message on invalid input', async () => {
-    const addLinkToProjectAction = new AddLinkToProjectAction();
-    await expect(addLinkToProjectAction.execute('google')).to.be.rejectedWith(TypeError);
-  });
-
-  it('returns an error message if parameters are undefined', async () => {
-    const addLinkToProjectAction = new AddLinkToProjectAction();
-    await expect(addLinkToProjectAction.execute()).to.be.rejectedWith(TypeError);
-  });
-
-  it('returns an error message if parameters not a string', async () => {
-    const addLinkToProjectAction = new AddLinkToProjectAction();
-    await expect(addLinkToProjectAction.execute(['google', 'google.com'])).to.be.rejectedWith(AssertionError);
-  });
-
-  xit('@asyncResolves : adds link to DB', async () => {});
-
-  it('@asyncResolves : returns an add object containing a response', async () => {
+  it('returns an add object containing a response', async () => {
     const action = new AddLinkToProjectAction();
     const project = new Project();
 
@@ -36,4 +19,25 @@ describe('Add Link to Project Action', ()=> {
     const expectedResult = new AddLinkToProjectResponse('google', 'google.com');
     expect(response).to.deep.equal(expectedResult);
   });
+
+  it('throws a type error if there are not three space delimited params', async () => {
+    const addLinkToProjectAction = new AddLinkToProjectAction();
+    const missingTwoParameters = 'google';
+    const result = addLinkToProjectAction.execute(missingTwoParameters);
+    await expect(result).to.be.rejectedWith(TypeError);
+  });
+
+  it('throws a type error if no params are passed', async () => {
+    const addLinkToProjectAction = new AddLinkToProjectAction();
+    const result = addLinkToProjectAction.execute();
+    await expect(result).to.be.rejectedWith(TypeError);
+  });
+
+  it('throws an assertion error if params not a string', async () => {
+    const addLinkToProjectAction = new AddLinkToProjectAction();
+    const result = addLinkToProjectAction.execute(['google', 'google.com']);
+    await expect(result).to.be.rejectedWith(AssertionError);
+  });
+
+  xit('@asyncResolves : adds link to DB', async () => {});
 });
