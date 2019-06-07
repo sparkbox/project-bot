@@ -5,7 +5,7 @@ const expect = chai.expect;
 const AddLinkToProjectAction = require('../lib/actions/addLinkToProjectAction');
 const AddLinkToProjectResponse = require('../lib/actions/addLinkToProjectResponse');
 const Project = require('../lib/project');
-const ProjectLinks = require('../lib/projectLinks');
+const ProjectLink = require('../lib/projectLink');
 const AssertionError = require('assert').AssertionError;
 
 
@@ -15,16 +15,14 @@ describe('Add Link to Project Action', ()=> {
     await expect(addLinkToProjectAction.execute('google')).to.be.rejectedWith(TypeError);
   });
 
-  it('returns an error message if parameters are undefined', () => {
-    const addLinkToProjectAction = new AddLinkToProjectAction(); 
-    const parseParamsThatThrows = () => addLinkToProjectAction.parseParams();
-    expect(parseParamsThatThrows).to.throw(TypeError, /invalid/);
+  it('returns an error message if parameters are undefined', async () => {
+    const addLinkToProjectAction = new AddLinkToProjectAction();
+    await expect(addLinkToProjectAction.execute()).to.be.rejectedWith(TypeError);
   });
 
-  it('returns an error message if parameters not a string', () => {
+  it('returns an error message if parameters not a string', async () => {
     const addLinkToProjectAction = new AddLinkToProjectAction();
-    const parseParamsThatThrows = () => addLinkToProjectAction.parseParams(['google', 'google.com']);
-    expect(parseParamsThatThrows).to.throw(AssertionError);
+    await expect(addLinkToProjectAction.execute(['google', 'google.com'])).to.be.rejectedWith(AssertionError);
   });
 
   xit('@asyncResolves : adds link to DB', async () => {});
