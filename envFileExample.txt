@@ -1,0 +1,12 @@
+#This is an example of your .env file within your Slackbot project.
+
+# SlackBot Environment Configuration which can be found in your api.slack.com account
+clientId=
+clientSecret=
+clientSigningSecret=
+
+# Here you will include your Knex File Configuration Information
+dbName=NameofDatabase
+dbUsername=PersonalUserName
+dbPassword=PersonalPassword
+dbHost=HostNumber
