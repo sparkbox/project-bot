@@ -9,13 +9,10 @@ const ProjectLink = require('../lib/projectLink');
 const AssertionError = require('assert').AssertionError;
 
 describe('Add Link to Project Action', ()=> {
-  it('returns an add object containing a response', async () => {
+  it('creates a ProjectLink', async () => {
     let projectLinkProjectArg;
     let projectLinkLabelArg;
     let projectLinkLinkArg;
-
-    let projectResponseLabelArg;
-    let projectResponseLinkArg;
 
     class ProjectLinkSpy {
       constructor(project, label, link) {
@@ -26,15 +23,12 @@ describe('Add Link to Project Action', ()=> {
       save() {}
     };
 
-    class ProjectResponseSpy {
-      constructor(label, link) {
-        projectResponseLabelArg = label;
-        projectResponseLinkArg = link;
-      }
+    class NullResponse {
+      constructor() {}
     }
 
     const action = new AddLinkToProjectAction(ProjectLinkSpy,
-                                              ProjectResponseSpy);
+                                              NullResponse);
 
     const project = new Project();
     const response = await action.execute('add google google.com', project);
@@ -42,11 +36,34 @@ describe('Add Link to Project Action', ()=> {
     expect(projectLinkProjectArg).to.equal(project);
     expect(projectLinkLabelArg).to.equal('google');
     expect(projectLinkLinkArg).to.equal('google.com');
+  });
+
+  it('creates a project reponse', async () => {
+    let projectResponseLabelArg;
+    let projectResponseLinkArg;
+
+    class NullLink {
+      constructor() {}
+      save() {}
+    }
+
+    class ProjectResponseSpy {
+      constructor(label, link) {
+        projectResponseLabelArg = label;
+        projectResponseLinkArg = link;
+      }
+    }
+
+    const action = new AddLinkToProjectAction(NullLink,
+                                              ProjectResponseSpy);
+
+    const project = new Project();
+    const response = await action.execute('add google google.com', project);
 
     expect(projectResponseLabelArg).to.equal('google');
     expect(projectResponseLinkArg).to.equal('google.com');
 
-    expect(response.constructor.name).to.equal('ProjectResponseSpy');
+//    expect(response.constructor.name).to.equal('ProjectResponseSpy');
   });
 
   it('throws a type error if there are not three space delimited params', async () => {
