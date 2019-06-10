@@ -10,5 +10,19 @@ describe('Project Link', () => {
     expect(projectLink).to.deep.equal(expectedResult)
   }); 
 
-  xit('Saves a link to the Project', () => {}); 
+  it('Saves a link to the Project', () => {
+    let hasAdded = false;
+    const projectLink = new ProjectLink({id: 'c17183'}, 'google', 'google.com' );
+    const db = { 
+      addLink(projectId, label, link) {
+        if(projectId == 'c17183' && label == 'google' && link == 'google.com') {
+          hasAdded = true;
+        }
+      }
+     };
+
+    projectLink.save(db);
+    
+    expect(hasAdded).to.equal(true);
+  }); 
 })
