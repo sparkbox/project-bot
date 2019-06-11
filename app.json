@@ -7,8 +7,7 @@
   "success_url":"/",
   "addons":[
     {
-      "plan": "mongolab",
-      "as": "MONGO"
+      "plan": "cleardb:ignite"
     }
   ],
   "env": {
