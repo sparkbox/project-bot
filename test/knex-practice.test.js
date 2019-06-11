@@ -1,7 +1,8 @@
 const knexion = require('../knexfile.test');
+// eslint-disable-next-line import/order
 const knex = require('knex')(knexion.test);
 
-describe.only('Knex Persistance', () => {
+describe('Knex Persistance', () => {
   before((callback) => {
     knex.migrate.latest().then(() => {
       callback();
