@@ -15,8 +15,6 @@ module.exports = {
   },
   production: {
     client: 'mysql',
-    connection: {
-      database: process.env.CLEARDB_DATABASE_URL,
-    },
+    connection: process.env.CLEARDB_DATABASE_URL,
   },
 };
