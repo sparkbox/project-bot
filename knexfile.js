@@ -16,10 +16,7 @@ module.exports = {
   production: {
     client: 'mysql',
     connection: {
-      database: process.env.DBNAME,
-      user: process.env.DBUSER,
-      password: process.env.DBPASSWORD,
-      host: process.env.DBHOST,
+      database: process.env.CLEARDB_DATABASE_URL,
     },
   },
 };
