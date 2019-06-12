@@ -23,4 +23,11 @@ describe('Project Link', () => {
 
     expect(hasAdded).to.equal(true);
   });
+  xit('', () => {
+    const project = new ProjectLink({ id: 'c17183' }, 'google', 'google.com');
+    console.log(project);
+    const driver = new MySQLDriver(project);
+    console.log(driver);
+    project.save(driver);
+  })
 });
