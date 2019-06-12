@@ -7,7 +7,6 @@ module.exports = (controller) => {
       /* eslint-disable-next-line no-unused-vars */
       const project = await Project.findByChannel(message.channel_id);
       const action = Actions.fromMessageText(message.text);
-      // console.log({ project });
       const response = await action.execute(message.text, { project });
       await response.sendToBot(bot, message);
     }
