@@ -1,11 +1,15 @@
 const { expect } = require('chai');
+const knexion = require('../knexfile');
+// eslint-disable-next-line import/order
+const knex = require('knex')(knexion.development);
 const ProjectLink = require('../lib/projectLink');
+const MySQLDriver = require('../lib/dbDriver/mysql');
 
 describe('Project Link', () => {
-  it('Has a Project, Label, and Link', () => {
-    const projectLink = { project: {}, label: 'google', link: 'google.com' };
-    const expectedResult = new ProjectLink({}, 'google', 'google.com');
-    expect(projectLink).to.deep.equal(expectedResult);
+  before((callback) => {
+    knex.migrate.latest().then(() => {
+      callback();
+    });
   });
 
   it('Saves a link to the Project', () => {
@@ -23,11 +27,21 @@ describe('Project Link', () => {
 
     expect(hasAdded).to.equal(true);
   });
-  xit('', () => {
-    const project = new ProjectLink({ id: 'c17183' }, 'google', 'google.com');
-    console.log(project);
-    const driver = new MySQLDriver(project);
-    console.log(driver);
+
+  it.only('@integration: projectLink save method saves link to driver', async () => {
+    const project = new ProjectLink({ channel_id: 'projectLink-Int' }, 'projectLinkIntegration', 'integration.com');
+    const driver = new MySQLDriver();
+
     project.save(driver);
-  })
+
+    await knex.select('*')
+      .from('project_links')
+      .where({ project_id: 'projectLink-Int' })
+      .then(rows => expect(rows[0].label).to.equal('projectLinkIntegration'));
+
+    await knex.select('label')
+      .from('project_links')
+      .where({ label: 'projectLinkIntegration' })
+      .del();
+  });
 });
