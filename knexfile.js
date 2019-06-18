@@ -1,6 +1,7 @@
 if (process.env.NODE_ENV !== 'production') {
   const env = require('node-env-file');
-  env(__dirname + '/.env');
+
+  env(`${__dirname}/.env`);
 }
 
 module.exports = {
