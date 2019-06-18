@@ -11,7 +11,7 @@ describe('MySQL/Knex Persistance', () => {
     });
   });
 
-  it('@integration: Knex stores an item to the db', async () => {
+  it('@integration: addLink stores an item to the db', async () => {
     const driver = new MySQLDriver();
     driver.addLink('sqlIntegration', 'MySQLIntegration', 'integrations.com');
 
