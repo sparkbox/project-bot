@@ -28,7 +28,7 @@ describe('Project Link', () => {
     expect(hasAdded).to.equal(true);
   });
 
-  it.only('@integration: projectLink save method saves link to driver', async () => {
+  it('@integration: projectLink save method saves link to driver', async () => {
     const project = new ProjectLink({ channel_id: 'projectLink-Int' }, 'projectLinkIntegration', 'integration.com');
     const driver = new MySQLDriver();
 
