@@ -14,7 +14,7 @@ describe('Project Link', () => {
 
   it('Saves a link to the Project', () => {
     let hasAdded = false;
-    const projectLink = new ProjectLink({ id: 'c17183' }, 'google', 'google.com');
+    const projectLink = new ProjectLink({ channel_id: 'c17183' }, 'google', 'google.com');
     const db = {
       addLink(projectId, label, link) {
         if (projectId === 'c17183' && label === 'google' && link === 'google.com') {
