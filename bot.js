@@ -47,8 +47,10 @@ This bot demonstrates many of the core features of Botkit:
     -> http://howdy.ai/botkit
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-var env = require('node-env-file');
-env(__dirname + '/.env');
+if (process.env.NODE_ENV !== 'production') {
+  const env = require('node-env-file');
+  env(__dirname + '/.env');
+}
 
 
 if (!process.env.clientId || !process.env.clientSecret || !process.env.PORT) {
