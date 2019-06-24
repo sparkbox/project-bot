@@ -1,4 +1,5 @@
 const { expect } = require('chai');
+// const { JSON } = require('');
 const ProjectOverviewResponse = require('../lib/actions/projectOverviewResponse.js');
 
 describe('Project Overview Response', () => {
@@ -8,15 +9,14 @@ describe('Project Overview Response', () => {
       { label: 'google', link: 'google.com' },
     ];
     const expectedResult = '1. facebook facebook.com\n2. google google.com';
-    console.log(expectedResult);
     let replyResponse = '';
     function replyMock(message, formattedResponse) {
-      replyResponse = formattedResponse;
+      replyResponse = formattedResponse.text.text;
     }
-    console.log(replyResponse);
     const responseInstance = new ProjectOverviewResponse(links);
     responseInstance.sendToBot({ reply: replyMock });
-    expect(replyResponse).to.equal(expectedResult);
+    console.log(replyResponse);
+    expect(replyResponse).to.deep.equal(expectedResult);
   });
 
   it('returns true when list of links is empty', () => {
