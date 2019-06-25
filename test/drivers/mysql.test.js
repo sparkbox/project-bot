@@ -5,6 +5,7 @@ const knex = require('knex')(connection.development);
 const MySQLDriver = require('../../lib/dbDriver/mysql');
 
 describe('MySQL/Knex Persistance', () => {
+
   it('@integration: addLink stores an item to the db', async () => {
     const driver = new MySQLDriver();
     driver.addLink({ project_id: 'sqlIntegration' }, 'MySQLIntegration', 'integrations.com');

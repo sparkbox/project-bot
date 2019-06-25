@@ -10,11 +10,6 @@ describe('Actions Builder', () => {
     expect(expectedInput).to.throw(AssertionError);
   });
 
-  it('returns an error message if input is undefined', () => {
-    const expectedInput = () => Actions.fromMessageText('');
-    expect(expectedInput).to.throw(TypeError, /No Term Found/);
-  });
-
   it('returns an new instance of action term', async () => {
     const messageText = 'add google google.com';
     const actionInstance = Actions.fromMessageText(messageText);

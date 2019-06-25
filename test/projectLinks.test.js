@@ -6,6 +6,7 @@ const ProjectLink = require('../lib/projectLink');
 const MySQLDriver = require('../lib/dbDriver/mysql');
 
 describe('Project Link', () => {
+
   it('Saves a link to the Project', () => {
     let hasAdded = false;
     const projectLink = new ProjectLink({ project_id: 'c17183' }, 'google', 'google.com');
