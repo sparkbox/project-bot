@@ -28,12 +28,12 @@ describe('Add Link to Project Action', () => {
     class NullResponse {}
 
     const action = new AddLinkToProjectAction(ProjectLinkSpy, NullResponse);
+    const context = { project: new Project('ccc') };
 
-    const project = new Project();
     // eslint-disable-next-line no-unused-vars
-    const response = await action.execute('add google google.com', project);
+    const response = await action.execute('add google google.com', context);
 
-    expect(projectLinkProjectArg).to.equal(project);
+    expect(projectLinkProjectArg).to.equal(context.project);
     expect(projectLinkLabelArg).to.equal('google');
     expect(projectLinkLinkArg).to.equal('google.com');
   });
@@ -62,10 +62,8 @@ describe('Add Link to Project Action', () => {
   // Component Level Test
   it('@component: returns an add object containing a response', async () => {
     const action = new AddLinkToProjectAction();
-    const project = new Project();
-
-    const response = await action.execute('add google google.com', project);
-
+    const context = { project: new Project('ccc') };
+    const response = await action.execute('add google google.com', context);
     expect(response.label).to.equal('google');
     expect(response.link).to.equal('google.com');
   });

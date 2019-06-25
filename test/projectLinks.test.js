@@ -37,4 +37,14 @@ describe('Project Link', () => {
         .where({ project_id: 'projectLink-Int' })
         .del());
   });
+
+// make sure we are getting an array of project links.
+  it.only('Creates list of project instances', async () => {
+    const driver = new MySQLDriver();
+    const links = await driver.listOutLinks(project);
+    console.log(links);
+    let linksList = [];
+
+
+  })
 });
