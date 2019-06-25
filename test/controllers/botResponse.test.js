@@ -27,7 +27,6 @@ describe('Bot Response', () => {
 
     },
   ]).then((message) => {
-    console.log(message.text);
     expect(message.text).to.equal('Link stored.');
   }));
 });

@@ -15,7 +15,6 @@ describe('Project Overview Response', () => {
     }
     const responseInstance = new ProjectOverviewResponse(links);
     responseInstance.sendToBot({ reply: replyMock });
-    console.log(replyResponse);
     expect(replyResponse).to.deep.equal(expectedResult);
   });
 
