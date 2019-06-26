@@ -45,28 +45,25 @@ describe('Project Link', () => {
     expect(projectLinkInstances).to.be.an('array');
   });
 
-  it('@integration: findByProject retrieves project links from db', async () => {
-    const driver = new MySQLDriver();
+  it('@component: findByProject gets all links from project', async () => {
+    const getAllLinksByProject = () => [{
+      project_id: 'CKQ225WSV',
+      label: 'aProjectLink',
+      url: 'Test.com',
+    },
+    {
+      project_id: 'CKQ225WSV',
+      label: 'aProjectLink2',
+      url: 'Test2.com',
+    }];
+    const mockDriver = { getAllLinksByProject };
     const context = { project: new Project('CKQ225WSV') };
-    const projectLinkInstances = await ProjectLink.findByProject(context.project, driver);
+    const projectLinkInstances = await ProjectLink.findByProject(context.project, mockDriver);
 
     const expectedResult = [
-      {
-        project: { project: 'CKQ225WSV' },
-        label: 'aProjectLink',
-        url: 'Test.com',
-      },
-      {
-        project: { project: 'CKQ225WSV' },
-        label: 'aProjectLink2',
-        url: 'Test2.com',
-      },
-      {
-        project: { project: 'CKQ225WSV' },
-        label: 'aProjectLink2',
-        url: 'Test.com',
-      }];
-
+      new ProjectLink({ project: 'CKQ225WSV' }, 'aProjectLink', 'Test.com'),
+      new ProjectLink({ project: 'CKQ225WSV' }, 'aProjectLink2', 'Test2.com'),
+    ];
     expect(projectLinkInstances).to.deep.equal(expectedResult);
   });
 });
