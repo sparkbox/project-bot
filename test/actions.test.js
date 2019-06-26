@@ -1,7 +1,7 @@
 const { expect } = require('chai');
 const { AssertionError } = require('assert');
 const Actions = require('../lib/actions/actions');
-const ProjectOverviewAction = require('../lib/actions/projectOverviewAction')
+const ProjectOverviewAction = require('../lib/actions/projectOverviewAction');
 const AddLinkToProjectAction = require('../lib/actions/addLinkToProjectAction');
 
 describe('Actions Builder', () => {

@@ -1,3 +1,6 @@
+// eslint-disable-next-line import/order
+const knexion = require('../knexfile');
+const knex = require('knex')(knexion.development);
 const chai = require('chai');
 const chaiAsPromised = require('chai-as-promised');
 
@@ -57,9 +60,22 @@ describe('Add Link to Project Action', () => {
     await expect(result).to.be.rejectedWith(AssertionError);
   });
 
-  xit('@asyncResolves : adds link to DB', async () => {});
+  it('@integration: adds link to DB', async () => {
+    const addLinkToProjectAction = new AddLinkToProjectAction();
+    const context = { project: new Project('a123') };
 
-  // Component Level Test
+    await addLinkToProjectAction.execute('add addlink toProjectExecute.com', context);
+
+    await knex.select('*')
+      .from('project_links')
+      .where({ project_id: 'a123' })
+      .then(rows => expect(rows[0].label).to.equal('addlink'))
+      .then(knex.select('label')
+        .from('project_links')
+        .where({ project_id: 'a123' })
+        .del());
+  });
+
   it('@component: returns an add object containing a response', async () => {
     const action = new AddLinkToProjectAction();
     const context = { project: new Project('ccc') };

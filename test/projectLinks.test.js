@@ -3,10 +3,10 @@ const knexion = require('../knexfile');
 // eslint-disable-next-line import/order
 const knex = require('knex')(knexion.development);
 const ProjectLink = require('../lib/projectLink');
+const Project = require('../lib/project');
 const MySQLDriver = require('../lib/dbDriver/mysql');
 
 describe('Project Link', () => {
-
   it('Saves a link to the Project', () => {
     let hasAdded = false;
     const projectLink = new ProjectLink({ project_id: 'c17183' }, 'google', 'google.com');
@@ -38,13 +38,35 @@ describe('Project Link', () => {
         .del());
   });
 
-// make sure we are getting an array of project links.
-  it.only('Creates list of project instances', async () => {
+  it('@integration: returns an array of project links', async () => {
     const driver = new MySQLDriver();
-    const links = await driver.listOutLinks(project);
-    console.log(links);
-    let linksList = [];
+    const context = { project: new Project('CKQ225WSV') };
+    const projectLinkInstances = await ProjectLink.findByProject(context.project, driver);
+    expect(projectLinkInstances).to.be.an('array');
+  });
 
+  it('@integration: findByProject retrieves project links from db', async () => {
+    const driver = new MySQLDriver();
+    const context = { project: new Project('CKQ225WSV') };
+    const projectLinkInstances = await ProjectLink.findByProject(context.project, driver);
 
-  })
+    const expectedResult = [
+      {
+        project: { project: 'CKQ225WSV' },
+        label: 'aProjectLink',
+        url: 'Test.com',
+      },
+      {
+        project: { project: 'CKQ225WSV' },
+        label: 'aProjectLink2',
+        url: 'Test2.com',
+      },
+      {
+        project: { project: 'CKQ225WSV' },
+        label: 'aProjectLink2',
+        url: 'Test.com',
+      }];
+
+    expect(projectLinkInstances).to.deep.equal(expectedResult);
+  });
 });
