@@ -1,7 +1,7 @@
 const { expect } = require('chai');
 const knexion = require('../knexfile');
 // eslint-disable-next-line import/order
-const knex = require('knex')(knexion.development);
+const knex = require('knex')(knexion);
 const ProjectLink = require('../lib/projectLink');
 const Project = require('../lib/project');
 const MySQLDriver = require('../lib/dbDriver/mysql');

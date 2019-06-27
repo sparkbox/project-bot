@@ -1,7 +1,7 @@
 const { expect } = require('chai');
 const connection = require('../../knexfile');
 // eslint-disable-next-line import/order
-const knex = require('knex')(connection.development);
+const knex = require('knex')(connection);
 const MySQLDriver = require('../../lib/dbDriver/mysql');
 
 describe('MySQL/Knex Persistance', () => {

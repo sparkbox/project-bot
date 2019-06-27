@@ -1,6 +1,6 @@
 // eslint-disable-next-line import/order
 const knexion = require('../knexfile');
-const knex = require('knex')(knexion.development);
+const knex = require('knex')(knexion);
 const chai = require('chai');
 const chaiAsPromised = require('chai-as-promised');
 

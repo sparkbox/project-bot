@@ -1,10 +1,11 @@
-if (process.env.NODE_ENV !== 'production') {
-  const env = require('node-env-file');
-  env(__dirname + '/.env');
-}
+const env = require('node-env-file');
 
-module.exports = {
-  development: {
+let connection = null;
+
+if (process.env.NODE_ENV !== 'production') {
+  env(__dirname + '/.env');
+
+  connection = {
     client: 'mysql',
     connection: {
       database: process.env.DBNAME,
@@ -12,9 +13,12 @@ module.exports = {
       password: process.env.DBPASSWORD,
       host: process.env.DBHOST,
     },
-  },
-  production: {
+  };
+} else {
+  connection = {
     client: 'mysql',
     connection: process.env.CLEARDB_DATABASE_URL,
-  },
-};
+  };
+}
+
+module.exports = connection;
