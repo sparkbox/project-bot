@@ -11,7 +11,7 @@ describe('Project Overview Response', () => {
     ];
     const expectedResult = smb()
       .attachment()
-      .text("*  *facebook* facebook.com\n*  *google* google.com")
+      .text('*  *facebook* facebook.com\n*  *google* google.com')
       .end()
       .json();
 

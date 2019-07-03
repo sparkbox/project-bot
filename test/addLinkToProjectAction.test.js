@@ -10,6 +10,7 @@ const { AssertionError } = require('assert');
 
 const AddLinkToProjectAction = require('../lib/actions/addLinkToProjectAction');
 const Project = require('../lib/project');
+const SQLDriver = require('../lib/dbDriver/mysql');
 
 describe('Add Link to Project Action', () => {
   it('creates a ProjectLink', async () => {
@@ -62,8 +63,7 @@ describe('Add Link to Project Action', () => {
 
   it('@integration: adds link to DB', async () => {
     const addLinkToProjectAction = new AddLinkToProjectAction();
-    const context = { project: new Project('a123') };
-
+    const context = { project: new Project('a123'), driver: new SQLDriver() };
     await addLinkToProjectAction.execute('add addlink toProjectExecute.com', context);
 
     await knex.select('*')
@@ -78,7 +78,7 @@ describe('Add Link to Project Action', () => {
 
   it('@component: returns an add object containing a response', async () => {
     const action = new AddLinkToProjectAction();
-    const context = { project: new Project('ccc') };
+    const context = { project: new Project('ccc'), driver: new SQLDriver() };
     const response = await action.execute('add google google.com', context);
     expect(response.label).to.equal('google');
     expect(response.link).to.equal('google.com');

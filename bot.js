@@ -71,6 +71,10 @@ var bot_options = {
     studio_command_uri: process.env.studio_command_uri
 };
 
+const SQLDriver = require('./lib/dbDriver/mysql');
+
+global.projectBot = {};
+projectBot.dbDriver = new SQLDriver();
 // Use a mongo database if specified, otherwise store in a JSON file local to the app.
 // Mongo is automatically configured when deploying to Heroku
 if (process.env.MONGO_URI) {
