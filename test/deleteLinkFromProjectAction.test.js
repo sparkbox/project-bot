@@ -38,7 +38,7 @@ describe('Delete Link From Project Action', () => {
     expect(result[0]).to.equal(undefined);
   });
 
-  it('@component: returns an add object containing a response', async () => {
+  it('@component: returns an delete object containing a response', async () => {
     const addLinkToProjectAction = new AddLinkToProjectAction();
     const deleteLinkFromProjectAction = new DeleteLinkFromProjectAction();
     const context = { project: new Project('ccc'), driver: new SQLDriver() };
