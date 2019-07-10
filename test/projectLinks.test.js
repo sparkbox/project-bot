@@ -66,4 +66,33 @@ describe('Project Link', () => {
     ];
     expect(projectLinkInstances).to.deep.equal(expectedResult);
   });
+
+  it('Deletes a link from the Project', () => {
+    let hasDeleted = false;
+    const projectLink = new ProjectLink({ project_id: 'c83' }, 'google', 'google.com');
+    const db = {
+      deleteLink(projectId, label) {
+        if (projectId.project_id === 'c83' && label === 'google') {
+          hasDeleted = true;
+        }
+      },
+    };
+    projectLink.delete(db);
+
+    expect(hasDeleted).to.equal(true);
+  });
+
+  it('@component: findByProjectAndLabel gets all links from project', async () => {
+    const getProjectLinkByLabel = () => [{
+      project_id: 'C987',
+      label: 'aProjectLink',
+      url: 'Test.com',
+    }];
+    const mockDriver = { getProjectLinkByLabel };
+    const projectLinkInstance = await ProjectLink
+      .findByProjectAndLabel({ project: new Project('C987') }, mockDriver, 'aProjectLink');
+    const expectedResult = new ProjectLink({ project_id: 'C987' }, 'aProjectLink', 'Test.com');
+
+    expect(projectLinkInstance).to.deep.equal(expectedResult);
+  });
 });
