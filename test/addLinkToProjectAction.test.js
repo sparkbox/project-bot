@@ -63,16 +63,16 @@ describe('Add Link to Project Action', () => {
 
   it('@integration: adds link to DB', async () => {
     const addLinkToProjectAction = new AddLinkToProjectAction();
-    const context = { project: new Project('a123'), driver: new SQLDriver() };
-    await addLinkToProjectAction.execute('add addlink toProjectExecute.com', context);
+    const context = { project: new Project('n123'), driver: new SQLDriver() };
+    await addLinkToProjectAction.execute('add added link.com', context);
 
     await knex.select('*')
       .from('project_links')
-      .where({ project_id: 'a123' })
-      .then(rows => expect(rows[0].label).to.equal('addlink'))
+      .where({ project_id: 'n123' })
+      .then(rows => expect(rows[0].label).to.equal('added'))
       .then(knex.select('label')
         .from('project_links')
-        .where({ project_id: 'a123' })
+        .where({ project_id: 'n123' })
         .del());
   });
 
