@@ -69,6 +69,7 @@ describe('Add Link to Project Action', () => {
     await knex.select('*')
       .from('project_links')
       .where({ project_id: 'a123' })
+      .andWhere({ url: 'toProjectExecute.com' })
       .then(rows => expect(rows[0].label).to.equal('addlink'))
       .then(knex.select('label')
         .from('project_links')
