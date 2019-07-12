@@ -9,8 +9,7 @@ module.exports = (controller) => {
       const action = Actions.fromMessageText(message.text);
       // eslint-disable-next-line no-undef
       const response = await action.execute(message.text, { project, driver: projectBot.dbDriver });
-      console.log(response);
-      await response.sendToBot(bot, message);
+      response.sendToBot(bot, message);
     }
   });
 };
