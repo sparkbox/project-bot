@@ -4,6 +4,7 @@ module.exports = function(webserver, controller) {
 
     debug('Configured /slack/receive url');
     webserver.post('/slack/receive', function(req, res) {
+        console.log('Request', req)
 
         // NOTE: we should enforce the token check here
 
