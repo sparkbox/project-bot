@@ -12,7 +12,12 @@ const AddLinkToProjectAction = require('../lib/actions/addLinkToProjectAction');
 const Project = require('../lib/project');
 const SQLDriver = require('../lib/dbDriver/mysql');
 
-describe('Add Link to Project Action', () => {
+describe('Add Link to Project Action', (done) => {
+  // after(() => {
+  //   console.log('destroying');
+  //   knex.destroy().then(() => done);
+  // });
+
   it('creates a ProjectLink', async () => {
     let projectLinkProjectArg;
     let projectLinkLabelArg;
