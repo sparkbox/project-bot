@@ -9,7 +9,7 @@
     "migrate": "knex migrate:latest",
     "rollback": "knex migrate:rollback",
     "test": "npm run mocha && npm run eslint",
-    "mocha": "mocha 'test/**/*.js'",
+    "mocha": "mocha --exit 'test/**/*.js'",
     "eslint": "eslint 'lib/**/*.js' 'skills/**/*.js' 'test/**/*.js'"
   },
   "nodemonConfig": {
