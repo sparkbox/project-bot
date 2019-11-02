@@ -31,7 +31,7 @@
     "express": "^4.14.0",
     "express-hbs": "^1.0.4",
     "hoek": ">=4.2.1",
-    "knex": "^0.16.5",
+    "knex": "^0.19.5",
     "node-env-file": "^0.1.8",
     "node-mysql": "^0.4.2",
     "querystring": "^0.2.0",
