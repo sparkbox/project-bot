@@ -28,7 +28,7 @@
     "cookie-parser": "^1.4.3",
     "debug": "^2.3.3",
     "dotenv": "^8.0.0",
-    "express": "^4.14.0",
+    "express": "^4.17.3",
     "express-hbs": "^1.0.4",
     "hoek": ">=4.2.1",
     "knex": "^0.16.5",
